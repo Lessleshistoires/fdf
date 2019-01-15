@@ -25,6 +25,8 @@ int main(int ac, char **av)
 		return (0);
 	if (!(e->m = (t_mlx*)malloc(sizeof(t_mlx))))
 		return (0);
+	if (!(e->p = (t_point*)malloc(sizeof(t_point))))
+		return (0);
 
 
 	e->fd = open(av[1], O_RDONLY);
@@ -44,6 +46,8 @@ int main(int ac, char **av)
 	
 	free(e->stock);
 	ft_free_table(e->tab, e->cl);
+	free(e->m);
+	free(e->p);
 	free(e);
 
 	return(0); 

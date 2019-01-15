@@ -12,6 +12,32 @@
 
 #include "fdf.h"
 
+int		ft_dist(t_env *e)
+{
+	if (e->cl <= 10)
+		e->p->yy = 50;
+	else if (e->cl >= 10 && e->cl <= 25)
+		e->p->yy = 25;
+	else if (e->cl >= 25 && e->cl <= 50)
+		e->p->yy = 10;
+	else if (e->cl >= 50 && e->cl <= 100)
+		e->p->yy = 5;
+	else 
+		e->p->yy = 2;
+	if (e->cn <= 10)
+		e->p->xx = 50;
+	else if (e->cn >= 10 && e->cn <= 25)
+		e->p->xx = 25;
+	else if (e->cn >= 25 && e->cn <= 50)
+		e->p->xx = 10;
+	else if (e->cn >= 50 && e->cn <= 100)
+		e->p->xx = 5;
+	else 
+		e->p->xx = 2;
+	return(0);
+
+}
+
 int mlx(t_env *e)
 {
 	e->m->mlx_ptr = mlx_init();
@@ -21,8 +47,57 @@ int mlx(t_env *e)
 	e->m->data = (int*)mlx_get_data_addr(e->m->img_ptr, &e->m->bpp,
 			&e->m->sizeline, &e->m->endian);
 	
+	ft_dist(e);
+	
+	e->p->yd = 100;
+	e->p->xd = 200;
+	float ctex = 1/2;
+	float ctey = 1;
+	if (e->cn < 30)
+		ctex = 5;
+	if (e->cl < 30)
+		ctey = 10;
+	e->p->x = 0;
+	e->p->y = 0;
 
+	while(e->p->y < e->cl)
+	{
+		while (e->p->x < e->cn)
+		{		
+			e->p->posx = (e->p->x + e->p->xd + e->tab[e->p->y][e->p->x] * ctex);
+			e->p->posy = (e->p->y + e->p->yd + e->tab[e->p->y][e->p->x] * ctey);
+			e->p->pos = e->p->posx + e->p->posy * L_IMG;
+			
+			if (e->p->x + 1 < e->cn)
+				{
+					e->p->posx1 = (e->p->x + 1 + e->p->xd + e->p->xx + e->tab[e->p->y][e->p->x + 1] * ctex);
 
+					e->p->posy1 = (e->p->y + e->p->yd + e->tab[e->p->y][e->p->x + 1] * ctey);
+
+					draw_line(e, (float)e->p->posx, (float)e->p->posy, (float)e->p->posx1, (float)e->p->posy1);
+				}
+			if (e->p->y + 1 < e->cl)
+				{
+					e->p->posx1 = (e->p->x + e->p->xd + e->tab[e->p->y + 1][e->p->x] * ctex);
+
+					e->p->posy1 = (e->p->y + 1 + e->p->yd + e->p->yy + e->tab[e->p->y + 1][e->p->x] * ctey);
+
+					draw_line(e, (float)e->p->posx, (float)e->p->posy, (float)e->p->posx1, (float)e->p->posy1);
+				}
+			if (e->tab[e->p->y][e->p->x] == 0)
+				e->m->data[e->p->pos] = RED;
+			else 
+				e->m->data[e->p->pos] = PINK;
+			e->p->x++;
+			e->p->xd += e->p->xx;
+		}
+		e->p->x = 0;
+		e->p->xd = 200;
+		e->p->y++;
+		e->p->yd += e->p->yy;
+
+	}
+/*
 	int x = 0;
 	int y = 0;
 	int xd = 0;
@@ -52,7 +127,7 @@ int mlx(t_env *e)
 		y++;
 
 	}
-
+*/
 
 	mlx_put_image_to_window(e->m->mlx_ptr, e->m->win_ptr, e->m->img_ptr,50,50);
 	mlx_loop (e->m->mlx_ptr);

@@ -23,7 +23,21 @@
 #define L_IMG 1000
 #define W_IMG 1000
 
-
+typedef struct 		s_point
+{
+	int		x;
+	int		y;
+	int		z;
+	int		xd;
+	int		yd;
+	int		posx;
+	int		posy;
+	int		posx1;
+	int		posy1;
+	int		pos;
+	int		xx;
+	int		yy;
+}					t_point;
 
 typedef struct		s_mlx
 {
@@ -62,6 +76,7 @@ typedef struct		s_env
 	int			hdist;
 	/*mlx*/
 	t_mlx		*m;
+	t_point		*p;
 }					t_env;
 
 
@@ -71,6 +86,7 @@ int 	ft_atoti(t_env *e);
 void 	ft_print_num_tables(int **tab, int cl, int cn);
 void    ft_free_table(int **tab, int cl);
 int		mlx(t_env *e);
-int		draw_line(t_env *e, int x1, int y1, int x2, int y2);
+int		draw_line(t_env *e, float x1, float y1, float x2, float y2);
+
 
 #endif
