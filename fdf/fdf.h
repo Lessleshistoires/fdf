@@ -14,14 +14,14 @@
 # define FDF_H
 
 #include "libft/includes/libft.h"
-#include "minilibx/mlx.h"
+#include "minilibx_macos/mlx.h"
 #include <math.h>
 #include "color.h"
 
 #define L_WIN 1100
-#define W_WIN 1100
-#define L_IMG 1000
-#define W_IMG 1000
+#define W_WIN 800
+#define L_IMG 1050
+#define W_IMG 700
 
 typedef struct 		s_point
 {

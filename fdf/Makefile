@@ -24,7 +24,7 @@ NAME = fdf
 
 DEPS = $(IDIR)/fdf.h
 
-INCL = -I /usr/local/include
+INCL = -I $(MLX)
 
 FRAM = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 

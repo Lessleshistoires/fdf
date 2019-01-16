@@ -15,25 +15,29 @@
 int		ft_dist(t_env *e)
 {
 	if (e->cl <= 10)
-		e->p->yy = 50;
+		e->p->yy = 70;
 	else if (e->cl >= 10 && e->cl <= 25)
-		e->p->yy = 25;
+		e->p->yy = 45;
 	else if (e->cl >= 25 && e->cl <= 50)
-		e->p->yy = 10;
+		e->p->yy = 20;
 	else if (e->cl >= 50 && e->cl <= 100)
-		e->p->yy = 5;
-	else 
+		e->p->yy = 10;
+	else if (e->cl >= 100 && e->cl <= 150)
+		e->p->yy = 4;
+	else
 		e->p->yy = 2;
 	if (e->cn <= 10)
-		e->p->xx = 50;
+		e->p->xx = 70;
 	else if (e->cn >= 10 && e->cn <= 25)
-		e->p->xx = 25;
+		e->p->xx = 45;
 	else if (e->cn >= 25 && e->cn <= 50)
-		e->p->xx = 10;
+		e->p->xx = 20;
 	else if (e->cn >= 50 && e->cn <= 100)
-		e->p->xx = 5;
-	else 
-		e->p->xx = 2;
+		e->p->xx = 15;
+	else if (e->cn >= 100 && e->cn <= 150)
+		e->p->xx = 10;
+	else
+		e->p->xx = 4;
 	return(0);
 
 }
@@ -49,14 +53,16 @@ int mlx(t_env *e)
 	
 	ft_dist(e);
 	
-	e->p->yd = 100;
-	e->p->xd = 200;
-	float ctex = 1/2;
-	float ctey = 1;
-	if (e->cn < 30)
-		ctex = 5;
-	if (e->cl < 30)
+	e->p->yd = 50;
+	e->p->xd = 0;
+	float ctex = 0.7;
+	float ctey = 0.9;
+	/*
+	if (e->cn < 22)
+		ctex = 10;
+	if (e->cl < 10)
 		ctey = 10;
+	*/
 	e->p->x = 0;
 	e->p->y = 0;
 
@@ -85,14 +91,14 @@ int mlx(t_env *e)
 					draw_line(e, (float)e->p->posx, (float)e->p->posy, (float)e->p->posx1, (float)e->p->posy1);
 				}
 			if (e->tab[e->p->y][e->p->x] == 0)
-				e->m->data[e->p->pos] = RED;
+				e->m->data[e->p->pos] = RED; 
 			else 
 				e->m->data[e->p->pos] = PINK;
 			e->p->x++;
 			e->p->xd += e->p->xx;
 		}
 		e->p->x = 0;
-		e->p->xd = 200;
+		e->p->xd = 0;
 		e->p->y++;
 		e->p->yd += e->p->yy;
 
@@ -129,7 +135,7 @@ int mlx(t_env *e)
 	}
 */
 
-	mlx_put_image_to_window(e->m->mlx_ptr, e->m->win_ptr, e->m->img_ptr,50,50);
+	mlx_put_image_to_window(e->m->mlx_ptr, e->m->win_ptr, e->m->img_ptr,25,50);
 	mlx_loop (e->m->mlx_ptr);
 	return (0);
 }
