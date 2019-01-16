@@ -24,12 +24,12 @@ int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
 	if (x1 == x2)
 	{
 		i = 0;
-		acc = 10;
+		acc = 1000;
 		while (i < acc)
 		{
 			y =  y1 + i * (y2 - y1) / acc;
 			x = x1;
-			e->m->data[((int)x + (int)y * L_IMG)] = GREY;
+			e->m->data[((int)x + (int)y * L_IMG)] = YELLOW;
 			i++;
 		}
 	}
@@ -38,12 +38,15 @@ int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
 		coef = (y1 - y2) / (x1 - x2);
 		cte = (float)y1 - coef * x1;
 		i = 0;
-		acc = 10;
+		acc = 1000;
 		while (i <= acc)
 		{
 			x =  x1 + i * (x2 - x1) / acc;
 			y = coef * x + cte;
-			e->m->data[((int)x + (int)y * L_IMG)] = CYAN;
+			if (y == y1)
+				e->m->data[((int)x + (int)y * L_IMG)] = YELLOW;
+			else
+				e->m->data[((int)x + (int)y * L_IMG)] = RED;
 			i++;
 		}
 		

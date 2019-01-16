@@ -21,7 +21,7 @@ int		ft_dist(t_env *e)
 	else if (e->cl >= 25 && e->cl <= 50)
 		e->p->yy = 20;
 	else if (e->cl >= 50 && e->cl <= 100)
-		e->p->yy = 10;
+		e->p->yy = 5;
 	else if (e->cl >= 100 && e->cl <= 150)
 		e->p->yy = 4;
 	else
@@ -33,9 +33,9 @@ int		ft_dist(t_env *e)
 	else if (e->cn >= 25 && e->cn <= 50)
 		e->p->xx = 20;
 	else if (e->cn >= 50 && e->cn <= 100)
-		e->p->xx = 15;
+		e->p->xx = 5;
 	else if (e->cn >= 100 && e->cn <= 150)
-		e->p->xx = 10;
+		e->p->xx = 5;
 	else
 		e->p->xx = 4;
 	return(0);
@@ -54,7 +54,7 @@ int mlx(t_env *e)
 	ft_dist(e);
 	
 	e->p->yd = 50;
-	e->p->xd = 0;
+	e->p->xd = 20;
 	float ctex = 0.7;
 	float ctey = 0.9;
 	/*
@@ -98,7 +98,7 @@ int mlx(t_env *e)
 			e->p->xd += e->p->xx;
 		}
 		e->p->x = 0;
-		e->p->xd = 0;
+		e->p->xd = 20;
 		e->p->y++;
 		e->p->yd += e->p->yy;
 
