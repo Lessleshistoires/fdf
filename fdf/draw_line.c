@@ -29,7 +29,7 @@ int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
 		{
 			y =  y1 + i * (y2 - y1) / acc;
 			x = x1;
-			e->m->data[((int)x + (int)y * L_IMG)] = YELLOW;
+			e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
 			i++;
 		}
 	}
@@ -44,7 +44,7 @@ int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
 			x =  x1 + i * (x2 - x1) / acc;
 			y = coef * x + cte;
 			if (y == y1)
-				e->m->data[((int)x + (int)y * L_IMG)] = YELLOW;
+				e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
 			else
 				e->m->data[((int)x + (int)y * L_IMG)] = RED;
 			i++;

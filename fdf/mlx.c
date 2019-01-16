@@ -91,9 +91,9 @@ int mlx(t_env *e)
 					draw_line(e, (float)e->p->posx, (float)e->p->posy, (float)e->p->posx1, (float)e->p->posy1);
 				}
 			if (e->tab[e->p->y][e->p->x] == 0)
-				e->m->data[e->p->pos] = RED; 
+				e->m->data[e->p->pos] = GREY; 
 			else 
-				e->m->data[e->p->pos] = PINK;
+				e->m->data[e->p->pos] = WHITE;
 			e->p->x++;
 			e->p->xd += e->p->xx;
 		}
