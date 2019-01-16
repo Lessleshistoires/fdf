@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.c                                        :+:      :+:    :+:   */
+/*   p_init.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,45 +12,49 @@
 
 #include "fdf.h"
 
-
-
-int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
+int		ft_dist(t_env *e)
 {
-	float x;
-	float y;
-	float coef;
-	float cte;
-	float i;
-	i = 0;
-	if (x1 == x2)
-	{
-		while (i < e->p->acc)
-		{
-			y =  y1 + i * (y2 - y1) / e->p->acc;
-			x = x1;
-			e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
-			i++;
-		}
-	}
+/*
+	if (e->cl <= 10)
+		e->p->yy = 30;
+	else if (e->cl > 10 && e->cl <= 20)
+		e->p->yy = 15;
+	else if (e->cl > 20 && e->cl <= 30)
+		e->p->yy = 10;
+	else if (e->cl > 30 && e->cl <= 60)
+		e->p->yy = 5;
+	else if (e->cl > 60 && e->cl <= 120)
+		e->p->yy = 3;
 	else
-	{
-		coef = (y1 - y2) / (x1 - x2);
-		cte = (float)y1 - coef * x1;
-		while (i <= e->p->acc)
-		{
-			x =  x1 + i * (x2 - x1) / e->p->acc;
-			y = coef * x + cte;
-			if (y != y1)
-				e->m->data[((int)x + (int)y * L_IMG)] = GREY;
-			else
-				e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
-			i++;
-		}
-		
-	}
+		e->p->yy = 1;
+
+	if (e->cn <= 10)
+		e->p->xx = 45;
+	else if (e->cn > 10 && e->cn <= 20)
+		e->p->xx = 25;
+	else if (e->cn > 20 && e->cn <= 45)
+		e->p->xx = 10;
+	else if (e->cn > 45 && e->cn <= 90)
+		e->p->xx = 5;
+	else if (e->cn > 90 && e->cn <= 180)
+		e->p->xx = 3;
+	else
+		e->p->xx = 2;
+*/
+	e->p->xx = 15;
+	e->p->yy = 15;
 	return(0);
 }
 
-
-
-
+int p_init(t_env *e)
+{
+	ft_dist(e);
+	e->p->yd = 150;
+	e->p->xd = 50;
+	e->p->ctex = 1.5;
+	e->p->ctey = 1.5;
+	e->p->x = 0;
+	e->p->y = 0;
+	e->p->acc = 1000;
+	return (0);
+}

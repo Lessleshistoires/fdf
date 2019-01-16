@@ -37,6 +37,9 @@ typedef struct 		s_point
 	int		pos;
 	int		xx;
 	int		yy;
+	float	ctex;
+	float	ctey;
+	float	acc;
 }					t_point;
 
 typedef struct		s_mlx
@@ -87,6 +90,11 @@ void 	ft_print_num_tables(int **tab, int cl, int cn);
 void    ft_free_table(int **tab, int cl);
 int		mlx(t_env *e);
 int		draw_line(t_env *e, float x1, float y1, float x2, float y2);
+int 	p_init(t_env *e);
 
+#define XX (e->p->x + 1 + e->p->xd + e->p->xx + e->tab[e->p->y][e->p->x + 1] * e->p->ctex)
+#define XY (e->p->y + e->p->yd + e->tab[e->p->y][e->p->x + 1] * e->p->ctey)
+#define YX (e->p->x + e->p->xd + e->tab[e->p->y + 1][e->p->x] * e->p->ctex)
+#define YY (e->p->y + 1 + e->p->yd + e->p->yy + e->tab[e->p->y + 1][e->p->x] * e->p->ctey)
 
 #endif
