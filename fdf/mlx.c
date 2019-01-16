@@ -42,7 +42,7 @@ while(e->p->y < e->cl)
 			e->p->xd += e->p->xx;
 		}
 		e->p->x = 0;
-		e->p->xd = 50;
+		e->p->xd = 20;
 		e->p->y++;
 		e->p->yd += e->p->yy;
 	}
