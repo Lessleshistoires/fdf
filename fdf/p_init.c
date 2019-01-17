@@ -12,20 +12,16 @@
 
 #include "fdf.h"
 
-int		ft_dist(t_env *e)
-{
-	e->p->xx = (L_IMG / e->cn) * 0.8;
-	e->p->yy = (W_IMG / e->cl) * 0.8;;
-	return(0);
-}
-
 int p_init(t_env *e)
 {
-	ft_dist(e);
-	e->p->yd = 20;
+	
+	e->p->xx = (L_IMG / e->cn) * 0.6;
+	e->p->yy = (W_IMG / e->cl) * 0.6;
+	e->p->yd = 0;
 	e->p->xd = 20;
+	e->p->xd2 = 450;
 	e->p->ctex = 1;
-	e->p->ctey = 1;
+	e->p->ctey = -1;
 	e->p->x = 0;
 	e->p->y = 0;
 	e->p->acc = 1000;

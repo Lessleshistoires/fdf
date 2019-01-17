@@ -39,7 +39,9 @@ _SRC = main.c \
 	   ft_print_num_tables.c \
 	   mlx.c \
 	   draw_line.c \
-	   p_init.c
+	   p_init.c \
+	   p_init2.c \
+	   gere_key.c
 
 
 .PHONY: all clean fclean re

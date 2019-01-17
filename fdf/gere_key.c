@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.c                                        :+:      :+:    :+:   */
+/*   gere_key.c                                          :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,45 +12,50 @@
 
 #include "fdf.h"
 
-
-
-int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
+int	gere_key(int key, t_env *e)
 {
-	float x;
-	float y;
-	float coef;
-	float cte;
-	float i;
-	i = 0;
-	if (x1 == x2)
+
+	if (key == ESC)
+		exit(1);
+	if (key == Q)
+		e->p->acc += 10;
+	if (key == W)
+		e->p->acc -= 10;
+	if (key == A)
+		e->p->xx++;
+	if (key == S)
+		e->p->xx--;
+	if (key == Z)
+		e->p->yy++;
+	if (key == X)
+		e->p->yy--;
+	if (key == DOWN_ARROW)
+		e->p->yd += 5;
+	if (key == UP_ARROW)
+		e->p->yd -= 5;
+	if (key == RIGHT_ARROW)
+		e->p->xd += 5;
+	if (key == LEFT_ARROW)
+		e->p->xd -= 5;
+	if (key == C)
+		e->p->ctex += 0.1;
+	if (key == V)
+		e->p->ctex -= 0.1;
+	if (key == B)
+		e->p->ctey += 0.1;
+	if (key == N)
+		e->p->ctey -= 0.1;
+	if (key == I)
 	{
-		while (i < e->p->acc)
-		{
-			y =  y1 + i * (y2 - y1) / e->p->acc;
-			x = x1;
-			e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
+		e->i = 1;
+		e->p->yd = 0;
 	}
-	else
+	if (key == J)
 	{
-		coef = (y1 - y2) / (x1 - x2);
-		cte = (float)y1 - coef * x1;
-		while (i <= e->p->acc)
-		{
-			x =  x1 + i * (x2 - x1) / e->p->acc;
-			y = coef * x + cte;
-			if (y != y1)
-				e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
-			else
-				e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
-		
+		e->i = 2;
+		e->p->yd = 0;
 	}
-	return(0);
+	ft_putnbr(e->p->yd);
+	ft_expose(e);
+	return (0);
 }
-
-
-
-

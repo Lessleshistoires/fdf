@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.c                                        :+:      :+:    :+:   */
+/*   p_init2.c                                           :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,44 +13,16 @@
 #include "fdf.h"
 
 
-
-int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
+int p_init2(t_env *e)
 {
-	float x;
-	float y;
-	float coef;
-	float cte;
-	float i;
-	i = 0;
-	if (x1 == x2)
-	{
-		while (i < e->p->acc)
-		{
-			y =  y1 + i * (y2 - y1) / e->p->acc;
-			x = x1;
-			e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
-	}
-	else
-	{
-		coef = (y1 - y2) / (x1 - x2);
-		cte = (float)y1 - coef * x1;
-		while (i <= e->p->acc)
-		{
-			x =  x1 + i * (x2 - x1) / e->p->acc;
-			y = coef * x + cte;
-			if (y != y1)
-				e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
-			else
-				e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
-		
-	}
-	return(0);
+	e->p->xx = L_IMG / e->cn * 0.6;
+	e->p->yy = W_IMG / e->cn * 0.6;
+	e->p->yd = 20;
+	e->p->xd2 = 450;
+	e->p->ctex = 1.1;
+	e->p->ctey = -1;
+	e->p->x = 0;
+	e->p->y = 0;
+	e->p->acc = 1000;
+	return (0);
 }
-
-
-
-

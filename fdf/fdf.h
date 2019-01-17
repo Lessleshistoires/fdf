@@ -17,6 +17,7 @@
 #include "minilibx_macos/mlx.h"
 #include <math.h>
 #include "color.h"
+#include "keyboard.h"
 
 #define L_WIN 1100
 #define W_WIN 800
@@ -29,6 +30,7 @@ typedef struct 		s_point
 	int		y;
 	int		z;
 	int		xd;
+	int		xd2;
 	int		yd;
 	int		posx;
 	int		posy;
@@ -77,6 +79,7 @@ typedef struct		s_env
 	int 		ymax;
 	int			ldist;
 	int			hdist;
+	int 		i;
 	/*mlx*/
 	t_mlx		*m;
 	t_point		*p;
@@ -91,6 +94,11 @@ void    ft_free_table(int **tab, int cl);
 int		mlx(t_env *e);
 int		draw_line(t_env *e, float x1, float y1, float x2, float y2);
 int 	p_init(t_env *e);
+int 	ft_pos1(t_env *e);
+int 	p_init2(t_env *e);
+int 	ft_pos2(t_env *e);
+int 	ft_expose(t_env *e);
+int 	gere_key(int key, t_env *e);
 
 #define XX (e->p->x + 1 + e->p->xd + e->p->xx + e->tab[e->p->y][e->p->x + 1] * e->p->ctex)
 #define XY (e->p->y + e->p->yd + e->tab[e->p->y][e->p->x + 1] * e->p->ctey)
