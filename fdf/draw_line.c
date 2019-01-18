@@ -6,51 +6,52 @@
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:02:12 by lpelissi          #+#    #+#             */
-/*   Updated: 2019/01/13 14:28:29 by lpelissi         ###   ########.fr       */
+/*   Updated: 2019/01/18 15:46:22 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static	void	straight(t_env *e, float i)
+{
+	float x;
+	float y;
 
+	if ((float)e->p->posx == (float)e->p->posx1)
+	{
+		while (i < e->p->acc)
+		{
+			y = (float)e->p->posy + i * ((float)e->p->posy1 -
+					(float)e->p->posy) / e->p->acc;
+			x = (float)e->p->posx;
+			e->m->data[((int)x + (int)y * L_IMG)] = RED;
+			i++;
+		}
+	}
+}
 
-int	draw_line(t_env *e, float x1, float y1, float x2, float y2)
+int				draw_line(t_env *e)
 {
 	float x;
 	float y;
 	float coef;
 	float cte;
 	float i;
+
 	i = 0;
-	if (x1 == x2)
+	coef = ((float)e->p->posy - (float)e->p->posy1) / ((float)e->p->posx -
+			(float)e->p->posx1);
+	cte = (float)(float)e->p->posy - coef * (float)e->p->posx;
+	straight(e, i);
+	while (i++ <= e->p->acc)
 	{
-		while (i < e->p->acc)
-		{
-			y =  y1 + i * (y2 - y1) / e->p->acc;
-			x = x1;
+		x = (float)e->p->posx + i * ((float)e->p->posx1 -
+				(float)e->p->posx) / e->p->acc;
+		y = coef * x + cte;
+		if (y != (float)e->p->posy)
+			e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
+		else
 			e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
 	}
-	else
-	{
-		coef = (y1 - y2) / (x1 - x2);
-		cte = (float)y1 - coef * x1;
-		while (i <= e->p->acc)
-		{
-			x =  x1 + i * (x2 - x1) / e->p->acc;
-			y = coef * x + cte;
-			if (y != y1)
-				e->m->data[((int)x + (int)y * L_IMG)] = BLUE;
-			else
-				e->m->data[((int)x + (int)y * L_IMG)] = RED;
-			i++;
-		}
-		
-	}
-	return(0);
+	return (0);
 }
-
-
-
-

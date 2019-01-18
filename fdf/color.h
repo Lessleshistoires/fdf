@@ -13,14 +13,14 @@
 #ifndef COLOR_H
 # define COLOR_H
 
-#define BLUE 255
-#define GREEN 255*256
-#define RED 255*256*256
-#define CYAN 255+255*256
-#define BLACK 0
-#define WHITE 255+255*256+255*256*256
-#define YELLOW 255*256+255*256*256
-#define PINK 255+255*256*256
-#define GREY 100*(1+256+256*256)
+# define BLUE 255
+# define GREEN 255*256
+# define RED 255*256*256
+# define CYAN 255+255*256
+# define BLACK 0
+# define WHITE 255+255*256+255*256*256
+# define YELLOW 255*256+255*256*256
+# define PINK 255+255*256*256
+# define GREY 100*(1+256+256*256)
 
 #endif

@@ -12,17 +12,17 @@
 
 #include "fdf.h"
 
-int ft_num_count(char *str)
+int			ft_num_count(char *str)
 {
 	int i;
 	int x;
 
 	i = 0;
 	x = 0;
-	while(str[i] != '\n')
+	while (str[i] != '\n')
 	{
 		while (str[i] == ' ')
-			i++;	
+			i++;
 		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
 		{
 			while ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
@@ -33,7 +33,7 @@ int ft_num_count(char *str)
 	return (x);
 }
 
-static int ft_tab_init(t_env *e)
+static int	ft_tab_init(t_env *e)
 {
 	e->x1 = 0;
 	if (!(e->tab = (int**)malloc(sizeof(int*) * e->cl)))
@@ -48,8 +48,7 @@ static int ft_tab_init(t_env *e)
 	return (0);
 }
 
-
-int	ft_atoti(t_env *e)
+int			ft_atoti(t_env *e)
 {
 	e->ctr = 0;
 	e->y = 0;

@@ -41,7 +41,9 @@ _SRC = main.c \
 	   draw_line.c \
 	   p_init.c \
 	   p_init2.c \
-	   gere_key.c
+	   gere_key.c \
+	   ft_pos1.c \
+	   ft_pos2.c
 
 
 .PHONY: all clean fclean re

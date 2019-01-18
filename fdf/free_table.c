@@ -24,4 +24,3 @@ void	ft_free_table(int **tab, int cl)
 	}
 	free(tab);
 }
-

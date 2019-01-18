@@ -14,9 +14,11 @@
 
 void	ft_print_num_tables(int **tab, int cl, int cn)
 {
-	int i = 0;
-	int j = 0;
+	int i;
+	int j;
 
+	i = 0;
+	j = 0;
 	while (i < cl)
 	{
 		while (j < cn)
