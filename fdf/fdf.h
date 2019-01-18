@@ -6,7 +6,7 @@
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:02:12 by lpelissi          #+#    #+#             */
-/*   Updated: 2019/01/18 14:41:20 by lpelissi         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:34:48 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct	s_env
 }				t_env;
 int				ft_read(t_env *e);
 int				ft_num_count(char *str);
+int				ft_parse(char *str);
 int				ft_atoti(t_env *e);
 void			ft_print_num_tables(int **tab, int cl, int cn);
 void			ft_free_table(int **tab, int cl);
@@ -90,18 +91,8 @@ int				mlx(t_env *e);
 int				draw_line(t_env *e);
 int				p_init(t_env *e);
 int				ft_pos1(t_env *e);
-int				p_init2(t_env *e);
 int				ft_pos2(t_env *e);
 int				ft_expose(t_env *e);
 int				gere_key(int key, t_env *e);
-
-# define X1 e->p->x + 1 + e->p->xd + e->p->xx
-# define X2 e->tab[e->p->y][e->p->x + 1] * e->p->ctex
-# define XX  X1 + X2
-# define XY e->p->y + e->p->yd + e->tab[e->p->y][e->p->x + 1] * e->p->ctey
-# define YX e->p->x + e->p->xd + e->tab[e->p->y + 1][e->p->x] * e->p->ctex
-# define Y1 e->p->y + 1 + e->p->yd + e->p->yy +
-# define Y2 e->tab[e->p->y + 1][e->p->x] * e->p->ctey
-# define YY  Y1 + Y2
 
 #endif

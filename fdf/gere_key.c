@@ -6,7 +6,7 @@
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:08:27 by lpelissi          #+#    #+#             */
-/*   Updated: 2019/01/18 15:08:56 by lpelissi         ###   ########.fr       */
+/*   Updated: 2019/01/18 17:18:18 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 static	void	move(int key, t_env *e)
 {
-	if (key == DOWN_ARROW)
-		e->p->yd += 5;
-	if (key == UP_ARROW)
+	if (e->i == 2)
 	{
-		e->p->yd -= 5;
-		if (e->p->yd == -10)
-			e->p->yd = 0;
+		if (key == DOWN_ARROW)
+			e->p->yd += 5;
+		if (key == UP_ARROW)
+		{
+			e->p->yd -= 5;
+			if (e->p->yd == -10)
+				e->p->yd = 0;
+		}
+		if (key == RIGHT_ARROW)
+			e->p->xd *= 1.1;
+		if (key == LEFT_ARROW)
+			e->p->xd /= 1.1;
 	}
-	if (key == RIGHT_ARROW)
-		e->p->xd *= 1.1;
-	if (key == LEFT_ARROW)
-		e->p->xd /= 1.1;
 }
 
 static	void	coef(int key, t_env *e)
 {
-	
-
 	if (key == ONE_PAD)
 		e->p->ctex += 0.2;
 	if (key == TWO_PAD)
@@ -39,24 +40,31 @@ static	void	coef(int key, t_env *e)
 	if (key == FOUR_PAD)
 	{
 		e->p->ctey += 0.2;
-		if (e->p->ctey >= 4)
+		if (e->p->ctey >= 2 && e->i == 1)
+			e->p->ctey = -1;
+		if (e->p->ctey >= 2 && e->i == 2)
 			e->p->ctey = -1;
 	}
 	if (key == FIVE_PAD)
 	{
 		e->p->ctey -= 0.2;
-		if (e->p->ctey <= -4)
+		if (e->p->ctey <= -2 && e->i == 1)
+			e->p->ctey = -1;
+		if (e->p->ctey <= -2 && e->i == 2)
 			e->p->ctey = -1;
 	}
-		
 }
 
 static	void	dist_acc(int key, t_env *e)
 {
-	if (key == MORE) 
+	if (key == MORE)
 		e->p->acc *= 1.1;
 	if (key == LESS)
+	{
 		e->p->acc /= 1.1;
+		if (e->p->acc < 1)
+			e->p->acc = 1000;
+	}
 	if (key == D)
 		e->p->xx++;
 	if (key == A)
@@ -64,14 +72,14 @@ static	void	dist_acc(int key, t_env *e)
 	if (key == S)
 	{
 		e->p->yy++;
-		if (e->p->yy == 50)
-			p_init(e);
+		if (e->p->yy > W_IMG / e->cl)
+			e->p->yy = (W_IMG / e->cl) * 0.6;
 	}
 	if (key == W)
 	{
 		e->p->yy--;
 		if (e->p->yy == 1)
-			p_init(e);
+			e->p->yy = (W_IMG / e->cl) * 0.6;
 	}
 }
 

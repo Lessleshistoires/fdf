@@ -6,7 +6,7 @@
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:28:54 by lpelissi          #+#    #+#             */
-/*   Updated: 2019/01/13 14:28:25 by lpelissi         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:37:04 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_expose(t_env *e)
 
 int	mlx(t_env *e)
 {
-	e->i = 1;
+	e->i = 2;
 	e->m->mlx_ptr = mlx_init(e);
 	p_init(e);
 	e->m->win_ptr = mlx_new_window(e->m->mlx_ptr, L_WIN, W_WIN, "fdf");

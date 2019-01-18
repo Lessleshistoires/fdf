@@ -6,7 +6,7 @@
 #    By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 14:31:05 by lpelissi          #+#    #+#              #
-#    Updated: 2019/01/12 12:33:41 by lpelissi         ###   ########.fr        #
+#    Updated: 2019/01/18 18:35:29 by lpelissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ _SRC = main.c \
 	   mlx.c \
 	   draw_line.c \
 	   p_init.c \
-	   p_init2.c \
 	   gere_key.c \
 	   ft_pos1.c \
 	   ft_pos2.c

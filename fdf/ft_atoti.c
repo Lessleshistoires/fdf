@@ -6,11 +6,29 @@
 /*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:38:01 by lpelissi          #+#    #+#             */
-/*   Updated: 2019/01/13 14:17:54 by lpelissi         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:31:10 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int			ft_parse(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] > 32 && str[i] < 45) || (str[i] > 45 && str[i] < 48)
+				|| str[i] > 57)
+		{
+			ft_putstr("wrong file");
+			exit(1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 int			ft_num_count(char *str)
 {
